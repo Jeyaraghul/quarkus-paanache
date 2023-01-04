@@ -1,0 +1,9 @@
+FROM quay.io/quarkus/quarkus-distroless-image:2.0
+COPY .mvn .
+COPY target/*-runner /app
+
+EXPOSE 9090
+USER nonroot
+
+CMD ["./app", "-Dquarkus.http.host=0.0.0.0"]
+
